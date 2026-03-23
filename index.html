@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Strength Analyzer</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Password Strength Analyzer</h1>
+        <p class="sub">
+          Local-only: your password never leaves this page (no network requests).
+        </p>
+      </header>
+
+      <section class="card">
+        <label class="label" for="pw">Password</label>
+        <div class="row">
+          <input id="pw" class="input" type="password" autocomplete="new-password" spellcheck="false" />
+          <button id="toggle" class="btn" type="button" aria-pressed="false">Show</button>
+        </div>
+        <div class="meta">
+          <span id="length" class="pill">Length: 0</span>
+          <span id="classes" class="pill">Classes: —</span>
+          <span id="entropy" class="pill">Entropy: —</span>
+        </div>
+
+        <div class="meterWrap" aria-label="Strength meter">
+          <div id="meter" class="meter"></div>
+        </div>
+        <div class="row between">
+          <div>
+            <div id="verdict" class="verdict">—</div>
+            <div id="score" class="score">Score: 0 / 100</div>
+          </div>
+          <button id="copy" class="btn secondary" type="button" disabled>Copy</button>
+        </div>
+      </section>
+
+      <section class="grid">
+        <section class="card">
+          <h2>Feedback</h2>
+          <ul id="feedback" class="list"></ul>
+        </section>
+        <section class="card">
+          <h2>Crack-time estimates</h2>
+          <p class="hint">Based on estimated entropy and typical guess rates.</p>
+          <dl class="dl">
+            <div class="dlRow">
+              <dt>Online (rate-limited)</dt>
+              <dd id="tOnlineSlow">—</dd>
+            </div>
+            <div class="dlRow">
+              <dt>Online (unthrottled)</dt>
+              <dd id="tOnlineFast">—</dd>
+            </div>
+            <div class="dlRow">
+              <dt>Offline (fast hash)</dt>
+              <dd id="tOfflineFast">—</dd>
+            </div>
+          </dl>
+          <p class="hint">
+            Real-world security depends on the site/app (hashing, MFA, rate limiting, breach history).
+          </p>
+        </section>
+      </section>
+
+      <footer class="footer">
+        <span>Tip: a long passphrase (4–6 random words) is often both strong and memorable.</span>
+      </footer>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+
